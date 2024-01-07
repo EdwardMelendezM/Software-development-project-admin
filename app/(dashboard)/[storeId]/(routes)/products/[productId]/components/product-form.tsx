@@ -62,10 +62,10 @@ export const ProductForm: React.FC<ProductFormProps> = ({
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  const title = initialData ? 'Edit product' : 'Create product';
-  const description = initialData ? 'Edit a product.' : 'Add a new product';
-  const toastMessage = initialData ? 'Product updated.' : 'Product created.';
-  const action = initialData ? 'Save changes' : 'Create';
+  const title = initialData ? 'Editar producto' : 'Crear producto';
+  const description = initialData ? 'Editar un producto.' : 'Agregar nuevo producto.';
+  const toastMessage = initialData ? 'Producto actualizado.' : 'Producto creado.';
+  const action = initialData ? 'Guardar cambios' : 'Crear';
 
   const defaultValues = initialData ? {
     ...initialData,
@@ -98,7 +98,7 @@ export const ProductForm: React.FC<ProductFormProps> = ({
       router.push(`/${params.storeId}/products`);
       toast.success(toastMessage);
     } catch (error: any) {
-      toast.error('Something went wrong.');
+      toast.error('Algo salió mal.');
     } finally {
       setLoading(false);
     }
@@ -110,9 +110,9 @@ export const ProductForm: React.FC<ProductFormProps> = ({
       await axios.delete(`/api/${params.storeId}/products/${params.productId}`);
       router.refresh();
       router.push(`/${params.storeId}/products`);
-      toast.success('Product deleted.');
+      toast.success('Producto eliminado');
     } catch (error: any) {
-      toast.error('Something went wrong.');
+      toast.error('Algo salió mal');
     } finally {
       setLoading(false);
       setOpen(false);
@@ -148,7 +148,7 @@ export const ProductForm: React.FC<ProductFormProps> = ({
             name="images"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Images</FormLabel>
+                <FormLabel>Imagenes</FormLabel>
                 <FormControl>
                   <ImageUpload 
                     value={field.value.map((image) => image.url)} 
@@ -167,9 +167,9 @@ export const ProductForm: React.FC<ProductFormProps> = ({
               name="name"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Name</FormLabel>
+                  <FormLabel>Nombre</FormLabel>
                   <FormControl>
-                    <Input disabled={loading} placeholder="Product name" {...field} />
+                    <Input disabled={loading} placeholder="Nombre de producto" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -180,7 +180,7 @@ export const ProductForm: React.FC<ProductFormProps> = ({
               name="price"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Price</FormLabel>
+                  <FormLabel>Precio</FormLabel>
                   <FormControl>
                     <Input type="number" disabled={loading} placeholder="9.99" {...field} />
                   </FormControl>
@@ -193,11 +193,11 @@ export const ProductForm: React.FC<ProductFormProps> = ({
               name="categoryId"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Category</FormLabel>
+                  <FormLabel>Categoria</FormLabel>
                   <Select disabled={loading} onValueChange={field.onChange} value={field.value} defaultValue={field.value}>
                     <FormControl>
                       <SelectTrigger>
-                        <SelectValue defaultValue={field.value} placeholder="Select a category" />
+                        <SelectValue defaultValue={field.value} placeholder="Seleccionar categoria" />
                       </SelectTrigger>
                     </FormControl>
                     <SelectContent>
@@ -215,11 +215,11 @@ export const ProductForm: React.FC<ProductFormProps> = ({
               name="sizeId"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Size</FormLabel>
+                  <FormLabel>Tamaño</FormLabel>
                   <Select disabled={loading} onValueChange={field.onChange} value={field.value} defaultValue={field.value}>
                     <FormControl>
                       <SelectTrigger>
-                        <SelectValue defaultValue={field.value} placeholder="Select a size" />
+                        <SelectValue defaultValue={field.value} placeholder="Seleccionar tamaño" />
                       </SelectTrigger>
                     </FormControl>
                     <SelectContent>
@@ -241,7 +241,7 @@ export const ProductForm: React.FC<ProductFormProps> = ({
                   <Select disabled={loading} onValueChange={field.onChange} value={field.value} defaultValue={field.value}>
                     <FormControl>
                       <SelectTrigger>
-                        <SelectValue defaultValue={field.value} placeholder="Select a color" />
+                        <SelectValue defaultValue={field.value} placeholder="Seleccionar color" />
                       </SelectTrigger>
                     </FormControl>
                     <SelectContent>
@@ -268,10 +268,10 @@ export const ProductForm: React.FC<ProductFormProps> = ({
                   </FormControl>
                   <div className="space-y-1 leading-none">
                     <FormLabel>
-                      Featured
+                      Destacado
                     </FormLabel>
                     <FormDescription>
-                      This product will appear on the home page
+                      Este producto aparecera en la pagina principal.
                     </FormDescription>
                   </div>
                 </FormItem>
@@ -291,10 +291,10 @@ export const ProductForm: React.FC<ProductFormProps> = ({
                   </FormControl>
                   <div className="space-y-1 leading-none">
                     <FormLabel>
-                      Archived
+                      Archivado
                     </FormLabel>
                     <FormDescription>
-                      This product will not appear anywhere in the store.
+                      Este producto no aparecera en la pagina principal.
                     </FormDescription>
                   </div>
                 </FormItem>

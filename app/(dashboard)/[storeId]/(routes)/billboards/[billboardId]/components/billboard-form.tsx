@@ -45,10 +45,10 @@ export const BillboardForm: React.FC<BillboardFormProps> = ({
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  const title = initialData ? 'Edit billboard' : 'Create billboard';
-  const description = initialData ? 'Edit a billboard.' : 'Add a new billboard';
-  const toastMessage = initialData ? 'Billboard updated.' : 'Billboard created.';
-  const action = initialData ? 'Save changes' : 'Create';
+  const title = initialData ? 'Editar valla publicitaria' : 'Crear valla publicitaria';
+  const description = initialData ? 'Editar una valla publicitaria' : 'Agregar una valla publicitaria';
+  const toastMessage = initialData ? 'Valla publicitaria actualizada.' : 'Valla publicitaria creada.';
+  const action = initialData ? 'Guardar cambios' : 'Crear';
 
   const form = useForm<BillboardFormValues>({
     resolver: zodResolver(formSchema),
@@ -120,11 +120,11 @@ export const BillboardForm: React.FC<BillboardFormProps> = ({
               name="imageUrl"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Background image</FormLabel>
+                  <FormLabel>Imagen de fondo</FormLabel>
                   <FormControl>
                     <ImageUpload 
                       value={field.value ? [field.value] : []} 
-                      disabled={loading} 
+                      disabled={loading}
                       onChange={(url) => field.onChange(url)}
                       onRemove={() => field.onChange('')}
                     />
@@ -139,9 +139,9 @@ export const BillboardForm: React.FC<BillboardFormProps> = ({
               name="label"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Label</FormLabel>
+                  <FormLabel>Etiqueta</FormLabel>
                   <FormControl>
-                    <Input disabled={loading} placeholder="Billboard label" {...field} />
+                    <Input disabled={loading} placeholder="Etiqueta de valla publicitaria" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
