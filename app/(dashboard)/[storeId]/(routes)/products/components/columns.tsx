@@ -31,7 +31,7 @@ export const columns: ColumnDef<ProductColumn>[] = [
             const isArchived = row.original.isArchived ? "outline" : "destructive" as BadgeVariant;
             return (
                 <Badge variant={isArchived}>
-                    {row.original.isFeatured ? "Si" : "No"}
+                    {row.original.isArchived ? "Si" : "No"}
                 </Badge>
             )
         }
