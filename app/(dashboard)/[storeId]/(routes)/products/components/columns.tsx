@@ -28,10 +28,10 @@ export const columns: ColumnDef<ProductColumn>[] = [
         accessorKey: "isArchived",
         header: "Archivado",
         cell: ({row}) => {
-            const isArchived = row.original.isArchived ? "outline" : "destructive" as BadgeVariant;
+            const isArchived = row.original.isArchived  ? "outline" : "destructive" as BadgeVariant;
             return (
                 <Badge variant={isArchived}>
-                    {row.original.isFeatured ? "Si" : "No"}
+                    {row.original.isArchived ? "Si" : "No"}
                 </Badge>
             )
         }
